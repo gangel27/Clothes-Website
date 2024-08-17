@@ -1,0 +1,44 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+/* body::before {
+    background-color: #21252b;
+    display: block;
+    content: '';
+    height: 150px;
+} */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.carousel-item {
+    transition: transform 3.5s ease-in-out;
+}
+
+.carousel-fade .active.carousel-item-start,
+.carousel-fade .active.carousel-item-end {
+    transition: opacity 0s 3.5s;
+}
+
+/* 
+.swipeDown {
+    opacity: 0;
+    transition: all 1s;
+    transform: translateY(-10%);
+}
+
+.swipeRight {
+    opacity: 0;
+    transition: all 1s;
+    transform: translate(-10%);
+}
+
+.swipeLeft {
+    opacity: 0;
+    transition: all 1s;
+    transform: translate(10%);
+} */
+
+#arrow-button:focus {
+    outline: 0;
+}

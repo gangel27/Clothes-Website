@@ -1,0 +1,11 @@
+{
+    "stock": [
+        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
+        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
+        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
+        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
+        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
+        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
+        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"}
+    ]
+}

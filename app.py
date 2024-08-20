@@ -47,19 +47,21 @@ def get_stock_img(filename):
 @app.route("/filter/<sex>+<size>", methods=['GET', 'POST'])
 def return_filter_items(sex, size): 
     img = 'Images/Stock_Images/'
-    title = 'TITTTLE'
-    subtitle = 'this is an example of what a subtitle would look like. and more flabberjabber'
 
     with open('stock.json') as json_file: 
         data = json.load(json_file) ['stock']
     images = []
     titles = []
     subtitles = []
-    for product in data: 
-        if (product['size'] in size or size == ".") and (sex == "." or sex == product['sex']): 
-            images.append(img + product['thumbnail'])
-            titles.append(product['title'])
-            subtitles.append(product['subtitle'])
+    if sex != "-" and size != "-":
+        print('yes')
+        for product in data: 
+            if (product['size'] in size or size == ".") and (size == "." or sex == product['sex']): 
+                images.append(img + product['thumbnail'])
+                titles.append(product['title'])
+                subtitles.append(product['subtitle'])
+    print(sex, size)
+    print(images)
 
     return jsonify([images, titles, subtitles])
     

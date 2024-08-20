@@ -1,11 +1,8 @@
 {
     "stock": [
-        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
-        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
-        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
-        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
-        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
-        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"},
-        {"name": "black_hoody", "type": "hoody", "gender": "men", "size":32, "thumbnail": "Hoodie_black.png"}
+        {"name": "black_hoodie", "type": "hoodie", "sex": ".", "size":"S", "title": "black hoodie", "subtitle": "this is the first subtitle", "thumbnail": "Hoodie_black.png"},
+        {"name": "white_hoodie", "type": "hoodie", "sex": ".", "size":"H", "title": "blue hoodie", "subtitle": "this is the second subtitle","thumbnail": "Hoodie_blue.png"},
+        {"name": "navy_hoodie", "type": "hoodie", "sex": ".", "size":"M", "title": "white hoodie", "subtitle": "this is the thirds subtitle","thumbnail": "Hoodie_white.png"},
+        {"name": "black_hoodie", "type": "hoodie", "sex": ".", "size":"S", "title": "white_2 hoodie", "subtitle": "this is the fourth subtitle","thumbnail": "Hoodie_white_2.png"}
     ]
 }

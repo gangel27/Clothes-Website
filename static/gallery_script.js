@@ -1,25 +1,8 @@
 const filters = document.getElementById("filters")
 const gallery_stock = document.getElementById("gallery_display")
 
-
-
-// this will later be incorperated with the back end 
-let white_hoodie_img_file = 'Images/Stock_Images/Hoodie_black.png'
-let title_text = "White Hoody"
-let subtitle_text = "This is a beautiful white hoodie for men. X, Xl, M, S"
-// we just need it to return a list of everything checked
-
-let images = [white_hoodie_img_file, white_hoodie_img_file, white_hoodie_img_file, white_hoodie_img_file];
-let titles = [title_text, title_text, title_text, title_text]; 
-let subtitle_texts = [subtitle_text, subtitle_text, subtitle_text, subtitle_text]
-
-
-let no_results = images.length;
-
 function display_search_results(images, titles, subtitles) {
     let no_results = images.length; 
-
-
     for (let i=0; i < gallery_stock.children.length; i++){
         let card = gallery_stock.children[i].children[0]
         if (i >= no_results){

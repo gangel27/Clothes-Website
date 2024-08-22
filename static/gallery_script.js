@@ -1,7 +1,7 @@
 const filters = document.getElementById("filters")
 const gallery_stock = document.getElementById("gallery_display")
 
-function display_search_results(images, titles, subtitles, ids) {
+function display_search_results(images, titles, subtitles, ids, prices) {
     let no_results = images.length; 
     for (let i=0; i < gallery_stock.children.length; i++){
         let card = gallery_stock.children[i].children[0]
@@ -15,14 +15,15 @@ function display_search_results(images, titles, subtitles, ids) {
             let card_subtitle = card_caption.getElementsByTagName("p")[0]
             let card_submit = card_caption.getElementsByTagName("button")[0]
             let card_id = card_caption.getElementsByTagName("p")[1]
+            let card_price = card_caption.getElementsByTagName("small")[0]
 
-            card_id.innerHTML = ids[i]
+            card_id.innerHTML = ids[i];
             card_image.src = images[i];
             card_title.innerHTML = titles[i]; 
             card_subtitle.innerHTML = subtitles[i]; 
+            card_price.innerHTML = '£' + prices[i];
 
             card_submit.onclick = function() {
-
                 window.location.href = `/purchase-${ids[i]}`;
             }
         }
@@ -50,7 +51,8 @@ async function query_search_results(sex, size) {
             titles = data[1]
             subtitles = data[2]
             ids = data[3]
-            display_search_results(images, titles, subtitles, ids)
+            prices = data[4]
+            display_search_results(images, titles, subtitles, ids, prices)
             
         })
         .catch(error => {

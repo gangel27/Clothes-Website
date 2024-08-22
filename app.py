@@ -47,6 +47,7 @@ def purchase_item(ProdID):
             size = product["size"]
             image_ = img + product["thumbnail"]
             subtitle = product["description"]
+
     print(image_)
 
     return render_template(
@@ -84,6 +85,7 @@ def return_filter_items(sex, size):
     titles = []
     subtitles = []
     ids = []
+    prices = []
 
     if sex != "-" and size != "-":
         print("yes")
@@ -95,10 +97,11 @@ def return_filter_items(sex, size):
                 titles.append(product["title"])
                 subtitles.append(product["subtitle"])
                 ids.append(product["id"])
+                prices.append(product['price'])
     print(sex, size)
     print(images)
 
-    return jsonify([images, titles, subtitles, ids])
+    return jsonify([images, titles, subtitles, ids, prices])
 
 
 @app.route("/data/<ProdID>", methods=["GET", "POST"])

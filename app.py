@@ -29,6 +29,36 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/purchase-<ProdID>")
+def purchase_item(ProdID):
+    title = ""
+    price = ""
+    subtitle = ""
+    size = ""
+
+    img = "Images/Stock_Images/"
+    with open("stock.json") as json_file:
+        data = json.load(json_file)["stock"]
+
+    for product in data:
+        if product["id"] == ProdID:
+            title = product["title"]
+            price = product["price"]
+            size = product["size"]
+            image_ = img + product["thumbnail"]
+            subtitle = product["description"]
+    print(image_)
+
+    return render_template(
+        "purchase.html",
+        product_title=title,
+        product_price=price,
+        product_size=size,
+        product_image=image_,
+        product_subtitle=subtitle,
+    )
+
+
 @app.route("/Images/<filename>")
 def get_file(filename):
     return send_from_directory(app.config["SITE_IMAGES_DEST"], filename)
@@ -44,28 +74,45 @@ def get_stock_img(filename):
     return send_from_directory(app.config["SITE_STOCK_IMG_DEST"], filename)
 
 
-@app.route("/filter/<sex>+<size>", methods=['GET', 'POST'])
-def return_filter_items(sex, size): 
-    img = 'Images/Stock_Images/'
+@app.route("/filter/<sex>+<size>", methods=["GET", "POST"])
+def return_filter_items(sex, size):
+    img = "Images/Stock_Images/"
 
-    with open('stock.json') as json_file: 
-        data = json.load(json_file) ['stock']
+    with open("stock.json") as json_file:
+        data = json.load(json_file)["stock"]
     images = []
     titles = []
     subtitles = []
+    ids = []
+
     if sex != "-" and size != "-":
-        print('yes')
-        for product in data: 
-            if (product['size'] in size or size == ".") and (size == "." or sex == product['sex']): 
-                images.append(img + product['thumbnail'])
-                titles.append(product['title'])
-                subtitles.append(product['subtitle'])
+        print("yes")
+        for product in data:
+            if (product["size"] in size or size == ".") and (
+                size == "." or sex == product["sex"]
+            ):
+                images.append(img + product["thumbnail"])
+                titles.append(product["title"])
+                subtitles.append(product["subtitle"])
+                ids.append(product["id"])
     print(sex, size)
     print(images)
 
-    return jsonify([images, titles, subtitles])
-    
+    return jsonify([images, titles, subtitles, ids])
+
+
+@app.route("/data/<ProdID>", methods=["GET", "POST"])
+def return_data(ProdID):
+    # img = "Images/Stock_Images/"
+
+    with open("stock.json") as json_file:
+        data = json.load(json_file)["stock"]
+
+    for product in data:
+        if product["id"] == ProdID:
+            return product
+    return "<h3>Not a valid product</h3>"
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port=5000)

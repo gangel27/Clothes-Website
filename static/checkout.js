@@ -1,4 +1,11 @@
-
+basket = [ 
+    { 
+        "Product": "asdf", 
+        "Number": "2",
+        "Size": "F",
+        "Price": "33"
+    }
+]
 document.cookie = ''
 
 function updateBasketTable() {
@@ -35,7 +42,7 @@ function updateStock() {
         "Size": "T",
         "Price": "3"
     }
-    document.cookie.push(new_prod)
+    //document.cookie.push(new_prod)
 
     // takes prod ID and number and returns size, price
 }

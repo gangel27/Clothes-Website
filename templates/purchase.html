@@ -62,11 +62,8 @@
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
                             style="max-width: 3rem" />
-                        <button 
-                        class="btn btn-outline-light flex-shrink-0" 
-                        type="button"
-                        data-bs-toggle="modal" 
-                        data-bs-target="#purchaseModel">
+                        <button class="btn btn-outline-light flex-shrink-0" type="button" data-bs-toggle="modal"
+                            data-bs-target="#purchaseModel">
                             <i class="bi-cart-fill me-1"></i>
                             Buy Now
                         </button>
@@ -75,38 +72,24 @@
             </div>
         </div>
 
-        <div class="modal fade text-dark" id="purchaseModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade text-dark" id="purchaseModel" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title lead" id="exampleModalLabel">Buy {{product_title}} now</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group py-3">
-                        <label for="email-form">Email Address</label>
-                        <input type="email" class="form-control" id="email-form" aria-describedby="email-help" placeholder="Enter email">
-                        <small id="email-help" class="form-text text-muted">This is so we can send you tracking updates</small>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title lead" id="exampleModalLabel">Billing Address</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="form-group py-3">
-                        <label for="email-form">Your Address</label>
-                        <input type="email" class="form-control" id="address-form" aria-describedby="address-help" placeholder="Enter Address">
-                    </div>
-                    <div class="form-group py-3">
-                        <label for="email-form">Your postcode</label>
-                        <input type="email" class="form-control" id="postcode-form" aria-describedby="postcode-help" placeholder="Enter Postcode">
-                    </div>
-                    <button class="btn btn-primary" type="sumbit">Buy</button>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-body">
 
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
     </section>
 
 

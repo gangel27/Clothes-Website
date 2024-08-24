@@ -42,3 +42,8 @@ html {
 #arrow-button:focus {
     outline: 0;
 }
+
+.toggle-display { 
+    display: none; 
+}
+

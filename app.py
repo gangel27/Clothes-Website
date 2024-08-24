@@ -24,10 +24,9 @@ def products():
     return render_template("gallery.html")
 
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
-
+@app.route('/checkout')
+def checkount(): 
+    return render_template('checkout.html')
 
 @app.route("/purchase-<ProdID>")
 def purchase_item(ProdID):

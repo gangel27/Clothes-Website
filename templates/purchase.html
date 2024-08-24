@@ -10,6 +10,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="//unpkg.com/bootstrap-select@1.12.4/dist/css/bootstrap-select.min.css" type="text/css" />
+    <link rel="stylesheet" href="//unpkg.com/bootstrap-select-country@4.0.0/dist/css/bootstrap-select-country.min.css" type="text/css" />
 
 </head>
 
@@ -39,7 +41,7 @@
                         </li>
 
                         <li class="nav-item px-5 ">
-                            <a href="contact" class="nav-link fw-bold">Contact Us</a>
+                            <a href="checkout" class="nav-link fw-bold">Your Basket</a>
                         </li>
                     </ul>
                 </ul>
@@ -53,43 +55,27 @@
                 <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
                         src="{{ url_for('static',filename='../{}'.format(product_image) ) }}" alt="..." /></div>
                 <div class="col-md-6">
-                    <h1 class="display-5 fw-bolder">{{product_title}}</h1>
+                    <h1 id="prodTitle" class="display-5 fw-bolder">{{product_title}}</h1>
                     <div class="fs-5 mb-5">
                         <!-- <span class="text-decoration-line-through">$45.00</span> -->
                         <span>£{{product_price}}</span>
                     </div>
                     <p class="lead">{{product_subtitle}}</p>
                     <div class="d-flex">
-                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
+                        <input class="text-center me-3" data-bind="value:replyNumber" min="0" id="inputQuantity" type="number" value="1"
                             style="max-width: 3rem" />
-                        <button class="btn btn-outline-light flex-shrink-0" type="button" data-bs-toggle="modal"
-                            data-bs-target="#purchaseModel">
-                            <i class="bi-cart-fill me-1"></i>
-                            Buy Now
+                        <button id='addToBasket'class="btn btn-outline-light flex-shrink-0 mx-2" type="button">
+                            <i class="bi-cart-plus me-1"></i>
+                            Add to basket
                         </button>
+                        <a class="btn btn-outline-light flex-shrink-0 mx-3" href="/checkout" >
+                            <i class="bi bi-cart-fill me-1"></i>
+                            Go to checkout
+                        </a>
                     </div>
+                    <p id='addedTag' class="my-3 toggle-display"> <i class="bi bi-bag-check"></i>Added to basket</p>
                 </div>
             </div>
-        </div>
-
-        <div class="modal fade text-dark" id="purchaseModel" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title lead" id="exampleModalLabel">Billing Address</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
 
@@ -198,7 +184,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+        <script src="{{url_for('static', filename='checkout.js')}}"></script>
     <script src="{{url_for('static', filename='purchase.js')}}"></script>
+    <script src="//unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script> 
+    <script src="//unpkg.com/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> 
+    <script src="//unpkg.com/bootstrap-select@1.12.4/dist/js/bootstrap-select.min.js"></script> 
+    <script src="//unpkg.com/bootstrap-select-country@4.0.0/dist/js/bootstrap-select-country.min.js"></script> 
+
 </body>
 
 </html>

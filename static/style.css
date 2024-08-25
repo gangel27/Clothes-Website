@@ -38,7 +38,24 @@ html {
     transition: all 1s;
     transform: translate(10%);
 } */
+.see-more-btn  { 
+    background-color: transparent;
+    
+}
+.down-icon{ 
+    color: black;
+    border: 5px solid black;  
+    animation-name: pulse; 
+    animation-duration: 2s; 
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes pulse{ 
+    50% { 
+        opacity: 0; 
 
+    }
+}
 #arrow-button:focus {
     outline: 0;
 }
@@ -48,7 +65,7 @@ html {
 }
 
 #landing-page{ 
-    min-height: 100vh; 
+    min-height: 85vh;; 
     background-color: green;
     background-image: url('../Images/chess_4.png');
     background-repeat: no-repeat;

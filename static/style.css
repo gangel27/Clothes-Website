@@ -47,4 +47,32 @@ html {
     display: none; 
 }
 
+#landing-page{ 
+    min-height: 100vh; 
+    background-color: green;
+    background-image: url('../Images/chess_4.png');
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+.typewriter-container { 
+    display: inline-block; 
+ 
+}
 
+.typerwriter-text { 
+    border-right: 5px solid; 
+    width: 100%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    animation: 
+        typing 2s,
+        cursor .4s step-end 3 alternate;
+}
+
+@keyframes cursor { 
+    50% {border-color: transparent}
+}
+
+@keyframes typing { 
+    from{width:0}
+}

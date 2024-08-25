@@ -56,10 +56,11 @@
                         src="{{ url_for('static',filename='../{}'.format(product_image) ) }}" alt="..." /></div>
                 <div class="col-md-6">
                     <h1 id="prodTitle" class="display-5 fw-bolder">{{product_title}}</h1>
-                    <div class="fs-5 mb-5">
+                    <div class="fs-3">
                         <!-- <span class="text-decoration-line-through">$45.00</span> -->
                         <span>£{{product_price}}</span>
                     </div>
+                    <div id='productSize'  class="fs-5 mb-5">{{product_size}}</div>
                     <p class="lead">{{product_subtitle}}</p>
                     <div class="d-flex">
                         <input class="text-center me-3" data-bind="value:replyNumber" min="0" id="inputQuantity" type="number" value="1"

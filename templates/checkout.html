@@ -58,8 +58,16 @@
                     <th scope="col">Price</th>
                 </tr>
             </thead>
+            <tbody>
+
+            </tbody>
         </table>
 
+        <button id="clearBasket" class="mt-3 btn btn-danger">
+            clear basket
+        </button>
+        
+        <!-- <button class="close" id="clearBasket" aria-label="close"></button> -->
         <div class="py-3">
             <label for="discountCode" class="form-label">Enter discount code</label>
             <input type="text" class="form-control w-25" id="discountCode" >
@@ -77,7 +85,7 @@
         <hr class="mb-3">
         <h4 class="mb-5 pt-5">Delivery Instructions</h4>
         <form novalidate>
-            <div class="row g-3">
+            <div class="row g-3 py-3 ">
                 <div class="col-sm-3">
                     <label for="firstName" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="firstName" placeholder="John" required>
@@ -92,36 +100,47 @@
                         Valid lastname is required
                     </div>
                 </div>
-
+            </div>
+            <div class="row g-3 py-3">
                 <div class="col-sm-7">
-                    <label for="address" class="form-label">1st line of address / PO box number</label>
-                    <input type="text" class="form-control" id="address" placeholder="" required>
+                    <label for="address1" class="form-label">1st line of address / PO box number</label>
+                    <input type="text" class="form-control" id="address1" placeholder="" required>
                     <div class="invalid-feedback">
                         Valid address is required
                     </div>
                 </div>
-
+            </div>
+            <div class="row g-3 py-3">
                 <div class="col-sm-7">
-                    <label for="address" class="form-label">2nd line of address</label>
-                    <input type="text" class="form-control" id="address" placeholder="" required>
+                    <label for="address2" class="form-label">2nd line of address</label>
+                    <input type="text" class="form-control" id="address2" placeholder="">
                     <div class="invalid-feedback">
                         Valid address is required
                     </div>
                 </div>
-
-
+            </div>
+            <div class="row g-3 py-3">
                 <div class="col-sm-7">
+                    <label for="email" class="form-label">Contact Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="sample@email.com">
+                    <div class="invalid-feedback">
+                        Please enter a delivery email
+                    </div>
+                </div>
+            </div>
+            <div class="row g-3 py-3">
+                <div class="col-sm-3">
                     <label for="country" class="form-label">Country</label>
-                    <input type="text" class="form-control" id="country" placeholder="United Kingdom" required>
+                    <input type="text" autocomplete='on' class="form-control" id="country" placeholder="United Kingdom" required>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="postcode" class="form-label">Post Code</label>
+                    <input type="text" autocomplete='on' class="form-control" id="postcode" placeholder="SW1A 1AA" required>
                 </div>
             </div>
         </form>
-    
     </section>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

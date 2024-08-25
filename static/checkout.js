@@ -1,60 +1,108 @@
-basket = [ 
-    { 
-        "Product": "asdf", 
-        "Number": "2",
-        "Size": "F",
-        "Price": "33"
-    }
-]
-document.cookie = ''
 
-function updateBasketTable() {
+async function updateBasketTable() {
     const table = document.getElementById('basket-table')
     const discountInput = document.getElementById('discountCode')
     const finalPrice = document.getElementById('finalPrice')
-    let i = 1
+    const thead = table.getElementsByTagName('thead')[0]; 
 
-    basket.forEach((prod) => { 
-        var row = table.insertRow(i); 
-        var cell1 = row.insertCell(0); 
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2); 
-        var cell4 = row.insertCell(3); 
-        
-        cell1.innerHTML = prod['Product']
-        cell2.innerHTML = prod['Number']
-        cell3.innerHTML = prod['Size']
-        cell4.innerHTML = prod['Price']
-        i++; 
+    // clears table
+    while( thead.children.length > 1) { 
+        thead.removeChild(thead.lastChild)
+    }
+
+    let i = 1
+    let total = 0 
+    items = document.cookie.split('?')
+    items.forEach(async (prod) =>  { 
+        if (prod != "stock" && prod != "") { 
+            let prodID = prod.split('-')[0]
+            let amount = prod.split('-')[1]
+
+            let table_name = ""
+            let table_number = amount
+            let table_size = "" 
+            let table_price = "" 
+
+
+            // function that returns product name, size, price 
+            await fetch(`/data/${prodID}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();  // Assuming the response is in JSON format
+            })
+            .then(data => {
+                // Handle the data received from the server
+                table_name = data['title']
+                table_size = size_convert(data['size'])
+                table_price = data['price'] * amount
+                total += parseFloat(table_price)     
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+
+            var row = table.insertRow(i); 
+            var cell1 = row.insertCell(0); 
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2); 
+            var cell4 = row.insertCell(3); 
+            
+            cell1.innerHTML = table_name
+            cell2.innerHTML = table_number
+            cell3.innerHTML = table_size
+            cell4.innerHTML = "£" + table_price
+            i++; 
+            finalPrice.innerHTML = "£" + total.toString()
+        }
     })
+     
+
+
 }
 
 // called from purchase screen 
 function updateStock() { 
     const addedMsg = document.getElementById('addedTag')
     const amount = document.getElementById('inputQuantity').value
-    prodId = window.location.pathname.split('-')[1]
+    prodID = window.location.pathname.split('-')[1]
     addedMsg.classList.toggle('toggle-display')
 
-    let new_prod = { 
-        "Product": "Green", 
-        "Number": "22",
-        "Size": "T",
-        "Price": "3"
-    }
+    document.cookie = document.cookie +  "?" + prodID + "-" + amount.toString() // stock?001-2?002-3
+    console.log(document.cookie)
+
     //document.cookie.push(new_prod)
 
     // takes prod ID and number and returns size, price
 }
 
-if (window.location.pathname === "/checkout") { 
-    console.log(document.cookie)
-    updateBasketTable(); 
-} else { 
-    const addToBasketBtn = document.getElementById('addToBasket')
-    addToBasketBtn.addEventListener('click', function(){ 
-        updateStock(); 
-    })
+function size_convert(size) { 
+    if (size == "H") { 
+        return "XL"
+    } else if (size == "T") { 
+        return "XS"
+    } else { 
+        return size
+    }
 }
+window.addEventListener('load', function() { 
+    // final screen
+    if (window.location.pathname === "/checkout") { 
+        let clearBasket = document.getElementById('clearBasket')
+        clearBasket.addEventListener('click', function() { 
+            document.cookie = "stock"
+            console.log('clear')
+            updateBasketTable(); 
+        })
+        updateBasketTable(); 
+    } else { // adding product to basket screen 
+        const addToBasketBtn = document.getElementById('addToBasket')
+        addToBasketBtn.addEventListener('click', function(){ 
+            updateStock(); 
+        })
+    }
+})
+
 
 

@@ -100,3 +100,7 @@ html {
     color: white; 
 
 }
+
+.invisible { 
+    visibility: hidden;
+}

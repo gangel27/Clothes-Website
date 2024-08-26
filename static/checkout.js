@@ -17,10 +17,11 @@ async function updateBasketTable() {
         if (prod != "stock" && prod != "") { 
             let prodID = prod.split('-')[0]
             let amount = prod.split('-')[1]
+            let size = prod.split('-')[2]
 
             let table_name = ""
             let table_number = amount
-            let table_size = "" 
+            let table_size = size 
             let table_price = "" 
 
 
@@ -35,7 +36,6 @@ async function updateBasketTable() {
             .then(data => {
                 // Handle the data received from the server
                 table_name = data['title']
-                table_size = size_convert(data['size'])
                 table_price = data['price'] * amount
                 total += parseFloat(table_price)     
             })
@@ -55,44 +55,32 @@ async function updateBasketTable() {
             cell4.innerHTML = "£" + table_price
             i++; 
             finalPrice.innerHTML = "£" + total.toString()
+        } else { 
+            finalPrice.innerHTML = "£" + 0
         }
     })
-     
-
-
 }
 
 // called from purchase screen 
 function updateStock() { 
     const addedMsg = document.getElementById('addedTag')
     const amount = document.getElementById('inputQuantity').value
+    const size = document.getElementById('sizeSelector').value
     prodID = window.location.pathname.split('-')[1]
     addedMsg.classList.toggle('toggle-display')
-
-    document.cookie = document.cookie +  "?" + prodID + "-" + amount.toString() // stock?001-2?002-3
-    console.log(document.cookie)
+    document.cookie = document.cookie +  "?" + prodID + "-" + amount.toString() + '-' + size;// stock?001-2?002-3
 
     //document.cookie.push(new_prod)
 
     // takes prod ID and number and returns size, price
 }
 
-function size_convert(size) { 
-    if (size == "H") { 
-        return "XL"
-    } else if (size == "T") { 
-        return "XS"
-    } else { 
-        return size
-    }
-}
 window.addEventListener('load', function() { 
     // final screen
     if (window.location.pathname === "/checkout") { 
         let clearBasket = document.getElementById('clearBasket')
         clearBasket.addEventListener('click', function() { 
             document.cookie = "stock"
-            console.log('clear')
             updateBasketTable(); 
         })
         updateBasketTable(); 

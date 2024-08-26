@@ -14,6 +14,7 @@
 
 <body class="bg-dark text-light">
     <!-- navbar -->
+    <!-- navbar -->
     <nav class="w-100 navbar navbar-expand-md navbar-dark py-3">
         <div class="container-fluid">
             <!-- <a href="#" class="navbar-brand"><img class="img-fluid w-50" src="../Images/logo_white.png" alt=""></a> -->
@@ -47,7 +48,10 @@
                         </li>
 
                         <li class="nav-item px-5 ">
+                            <div class="d-flex flex-row">
                             <a href="checkout" class="nav-link fw-bold">Your Basket</a>
+                            <i id='basketIcon'style="color: red; " class="invisible bi bi-1-circle-fill"></i>
+                            </div>
                         </li>
                     </ul>
                 </ul>
@@ -159,7 +163,14 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
         <script src="{{url_for('static', filename='checkout.js')}}"></script>
-
+        <script>
+            let basketIcon = document.getElementById('basketIcon')
+            console.log(basketIcon)
+            console.log(document.cookie)
+            if (document.cookie !== "stock") { 
+                basketIcon.classList.toggle('invisible')
+            } 
+        </script>
     <!-- <script src="{{url_for('static', filename='js')}}"></script> -->
 </body>
 

@@ -93,3 +93,10 @@ html {
 @keyframes typing { 
     from{width:0}
 }
+
+#sizeSelector { 
+
+    border: white; 
+    color: white; 
+
+}

@@ -104,3 +104,10 @@ html {
 .invisible { 
     visibility: hidden;
 }
+
+
+.contact-div:hover { 
+    transform: scale(1.2);
+}
+
+

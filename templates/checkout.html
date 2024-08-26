@@ -163,15 +163,8 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
         <script src="{{url_for('static', filename='checkout.js')}}"></script>
-        <script>
-            let basketIcon = document.getElementById('basketIcon')
-            console.log(basketIcon)
-            console.log(document.cookie)
-            if (document.cookie !== "stock") { 
-                basketIcon.classList.toggle('invisible')
-            } 
-        </script>
-    <!-- <script src="{{url_for('static', filename='js')}}"></script> -->
+        
+    <script src="{{url_for('static', filename='nav.js')}}"></script>
 </body>
 
 </html>

@@ -115,14 +115,7 @@
     <script src="//unpkg.com/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> 
     <script src="//unpkg.com/bootstrap-select@1.12.4/dist/js/bootstrap-select.min.js"></script> 
     <script src="//unpkg.com/bootstrap-select-country@4.0.0/dist/js/bootstrap-select-country.min.js"></script> 
-    <script>
-        let basketIcon = document.getElementById('basketIcon')
-        console.log(basketIcon)
-        console.log(document.cookie)
-        if (document.cookie !== "stock") { 
-            basketIcon.classList.toggle('invisible')
-        } 
-    </script>
+    <script src="{{url_for('static', filename='nav.js')}}"></script>
 </body>
 
 </html>

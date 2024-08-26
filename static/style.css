@@ -38,76 +38,84 @@ html {
     transition: all 1s;
     transform: translate(10%);
 } */
-.see-more-btn  { 
+.see-more-btn {
     background-color: transparent;
-    
+
 }
-.down-icon{ 
+
+.down-icon {
     color: black;
-    border: 5px solid black;  
-    animation-name: pulse; 
-    animation-duration: 2s; 
+    border: 5px solid black;
+    animation-name: pulse;
+    animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
-@keyframes pulse{ 
-    50% { 
-        opacity: 0; 
+
+@keyframes pulse {
+    50% {
+        opacity: 0;
 
     }
 }
+
 #arrow-button:focus {
     outline: 0;
 }
 
-.toggle-display { 
-    display: none; 
+.toggle-display {
+    display: none;
 }
 
-#landing-page{ 
-    min-height: 85vh;; 
+#landing-page {
+    min-height: 85vh;
+    ;
     background-color: green;
     background-image: url('../Images/chess_4.png');
     background-repeat: no-repeat;
-    background-size: cover; 
-}
-.typewriter-container { 
-    display: inline-block; 
- 
+    background-size: cover;
 }
 
-.typerwriter-text { 
-    border-right: 5px solid; 
-    width: 100%; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    animation: 
+.typewriter-container {
+    display: inline-block;
+
+}
+
+.typerwriter-text {
+    border-right: 5px solid;
+    border-color: transparent;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
         typing 2s,
-        cursor .4s step-end 3 alternate;
+        cursor .4s steps(25) 5 alternate;
 }
 
-@keyframes cursor { 
-    50% {border-color: transparent}
+@keyframes cursor {
+    50% {
+        border-color: white;
+    }
 }
 
-@keyframes typing { 
-    from{width:0}
+@keyframes typing {
+    from {
+        width: 0
+    }
 }
 
-#sizeSelector { 
+#sizeSelector {
 
-    border: white; 
-    color: white; 
+    border: white;
+    color: white;
 
 }
 
-.invisible { 
+.invisible {
     visibility: hidden;
 }
 
 
-.contact-div:hover { 
+.contact-div:hover {
     transform: scale(1.2);
 }
-
-

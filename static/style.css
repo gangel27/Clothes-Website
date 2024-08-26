@@ -38,6 +38,62 @@ html {
     transition: all 1s;
     transform: translate(10%);
 } */
+
+.swipeDown {
+    animation-name: swipeDown;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+}
+
+.swipeLeft {
+    animation-name: swipeLeft;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+}
+
+.swipeRight {
+    animation-name: swipeRight;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+}
+
+.phase-in {
+    animation-name: phase-in;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+}
+
+@keyframes phase-in {
+    from {
+        opacity: 0
+    }
+}
+
+@keyframes swipeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10%)
+    }
+}
+
+@keyframes swipeRight {
+    from {
+        opacity: 0;
+        transform: translate(-10%)
+    }
+}
+
+@keyframes swipeLeft {
+    from {
+        opacity: 0;
+        transform: translate(10%)
+    }
+}
+
 .see-more-btn {
     background-color: transparent;
 

@@ -76,6 +76,7 @@ function updateStock() {
 }
 
 window.addEventListener('load', function() { 
+    if (document.cookie === ""){document.cookie = 'stock'}
     // final screen
     if (window.location.pathname === "/checkout") { 
         let clearBasket = document.getElementById('clearBasket')

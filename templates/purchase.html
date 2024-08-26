@@ -19,7 +19,7 @@
 
 <body class="bg-dark text-light">
     <!-- navbar -->
-    <nav class="swipeDown w-100 navbar navbar-expand-md navbar-dark py-3">
+    <nav class=" w-100 navbar navbar-expand-md navbar-dark py-3">
         <div class="container-fluid">
             <!-- <a href="#" class="navbar-brand"><img class="img-fluid w-50" src="../Images/logo_white.png" alt=""></a> -->
             <div class="d-flex flex-row">
@@ -63,7 +63,7 @@
         </div>
     </nav>
 
-    <section class="phase-in py-5 bg-dark text-light">
+    <section class="py-5 bg-dark text-light">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
                 <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
@@ -76,13 +76,15 @@
                     </div>
 
                     <select class="custom-select mt-3 mr-sm-2 bg-dark " id="sizeSelector">
-
                         <option selected value="small">Small</option>
                         <option value="medium">Medium
                         </option>
                         <option value="large">Large</option>
                         <option value="xlarge">Extra Large</option>
                     </select>
+                    <button id='more-info-btn' style="border:none;" class="m-0 pl-3 btn btn-outline-light ">
+                        <i class="bi bi-info-circle"></i>
+                    </button>
                     <div id='productSize' class="fs-5 mb-5">{{product_size}}</div>
                     <p class="lead">{{product_subtitle}}</p>
                     <div class="d-flex">
@@ -103,7 +105,7 @@
     </section>
 
     <hr class="w-50 mx-auto ">
-    <section class="phase-in p-5 bg-dark text-light">
+    <section class="p-5 bg-dark text-light">
         <div class="container-fluid">
 
             <div class="row g-4">
@@ -125,6 +127,9 @@
             </div>
         </div>
     </section>
+    <div class="text-end w-100 pr-3">
+        <p><i class="bi bi-c-circle"></i> Designed by George Angel</p>
+    </div>
 
 
 

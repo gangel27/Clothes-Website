@@ -62,9 +62,9 @@ html {
 
 .phase-in {
     animation-name: phase-in;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
-    animation-timing-function: ease-in;
+    animation-timing-function: ease-out;
 }
 
 @keyframes phase-in {
@@ -173,5 +173,11 @@ html {
 
 
 .contact-div:hover {
+    transform: scale(1.2);
+}
+
+#more-info-btn:hover {
+    background-color: rgb(33, 37, 43);
+    color: white;
     transform: scale(1.2);
 }

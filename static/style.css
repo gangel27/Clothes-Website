@@ -20,6 +20,10 @@ html {
     transition: opacity 0s 3.5s;
 }
 
+.navbar-brand { 
+    min-width: 150px; 
+}
+
 /* 
 .swipeDown {
     opacity: 0;
@@ -180,4 +184,30 @@ html {
     background-color: rgb(33, 37, 43);
     color: white;
     transform: scale(1.2);
+}
+
+#addedTag { 
+    opacity: 0;
+    /* animation-name: add-basket; 
+    animation-duration: 3s; 
+    animation-iteration-count: 1; */
+
+
+}
+
+.added-basket-anim { 
+    animation-name: add-basket; 
+    animation-duration: 3s; 
+    animation-iteration-count: 1;
+}
+
+
+@keyframes add-basket {
+    10%{opacity:1}
+    99%{opacity: 1;}
+    100%{opacity: 0}
+}
+
+.error-msg { 
+    color: red; 
 }

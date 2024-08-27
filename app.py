@@ -151,6 +151,9 @@ def return_data(ProdID):
             return product
     return "<h3>Not a valid product</h3>"
 
+@app.route('/return-form-data', methods=['POST'])
+def return_form_data(): 
+    pass 
 
 
 

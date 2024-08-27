@@ -1,4 +1,3 @@
-console.log('this is the purchase screen')
 
 window.addEventListener('load', function() { 
     const prodSize = document.getElementById('productSize')

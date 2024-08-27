@@ -2,8 +2,7 @@
 function toggleNotif() { 
     
     let basketIcon = document.getElementById('basketIcon')
-    console.log(document.cookie)
-    console.log(basketIcon.classList.contains('invisible'))
+
     if (document.cookie === "stock"){
         basketIcon.classList.add('invisible');
     } else if (document.cookie.includes('stock')) {
@@ -11,23 +10,20 @@ function toggleNotif() {
     } else { 
         console.log('rip')
     }
-    console.log('toggled!')
-    console.log(document.cookie)
-    console.log(basketIcon.classList.contains('invisible'))
+
 }
 
 
 
 window.addEventListener('load', function() { 
     toggleNotif(); 
-    console.log(window.location.pathname.split('-'))
     // final screen
     if (window.location.pathname === "/checkout") { 
         const emptyBasket = document.getElementById('clearBasket')
         emptyBasket.addEventListener('click', toggleNotif)
     } else if (window.location.pathname.split('-')[0] === '/purchase') {
         const addBasket = document.getElementById('addToBasket')
-        console.log(addBasket)
+
         addBasket.addEventListener('click', toggleNotif)
     }
 })

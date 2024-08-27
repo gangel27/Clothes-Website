@@ -15,14 +15,14 @@
 <body class="bg-dark text-light">
     <!-- navbar -->
     <!-- navbar -->
-    <nav class=" w-100 navbar navbar-expand-md navbar-dark py-3">
+    <nav class="swipeDown w-100 navbar navbar-expand-lg navbar-dark py-3">
         <div class="container-fluid">
             <!-- <a href="#" class="navbar-brand"><img class="img-fluid w-50" src="../Images/logo_white.png" alt=""></a> -->
             <div class="d-flex flex-row">
                 <a href="index" class="navbar-brand"><img class="img-fluid w-50" src="../Images/logo_white.png"
                         alt=""></a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <button style="right: 5vw;" class="position-fixed fixed-right navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -84,7 +84,12 @@
         <!-- <button class="close" id="clearBasket" aria-label="close"></button> -->
         <div class="py-3">
             <label for="discountCode" class="form-label">Enter discount code</label>
-            <input type="text" class="form-control w-25" id="discountCode">
+            <div class="d-flex flex-column flex-sm-row gap-3">
+                <input type="text" class="form-control w-50" id="discountCode">
+                <button id="discountSubmit" class="btn btn-outline-light btn-dark">Submit</button>
+            </div>
+            <p id='validDiscount' style="color: green;" class="toggle-display">Discount Applied</p>
+            <p id='invalidDiscount' style="color: red;" class="toggle-display">Discount Code not valid</p>
         </div>
         <div class="d-flex flex-row">
             <p class="lead mx-3">Total: </p>
@@ -98,64 +103,81 @@
     <section class="p-5 container">
         <hr class="mb-3">
         <h4 class="mb-5 pt-5">Delivery Instructions</h4>
-        <form novalidate>
+        <form id="submit-form" novalidate>
             <div class="row g-3 py-3 ">
-                <div class="col-sm-3">
+                <div class="form-field col-sm-3">
                     <label for="firstName" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="firstName" placeholder="John" required>
-                    <div class="invalid-feedback">
+                    <div class="error-msg toggle-display">
                         Valid firstname is required
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="form-field col-sm-3">
                     <label for="lastName" class="form-label">Last Name</label>
                     <input type="text" class="form-control" id="lastName" placeholder="Smith" required>
-                    <div class="invalid-feedback">
+                    <div class="error-msg toggle-display">
                         Valid lastname is required
                     </div>
                 </div>
             </div>
-            <div class="row g-3 py-3">
+            <div class="form-field row g-3 py-3">
                 <div class="col-sm-7">
                     <label for="address1" class="form-label">1st line of address / PO box number</label>
                     <input type="text" class="form-control" id="address1" placeholder="" required>
-                    <div class="invalid-feedback">
+                    <div class="error-msg toggle-display">
                         Valid address is required
                     </div>
                 </div>
             </div>
             <div class="row g-3 py-3">
-                <div class="col-sm-7">
+                <div class="form-field col-sm-7 not-necessary">
                     <label for="address2" class="form-label">2nd line of address</label>
                     <input type="text" class="form-control" id="address2" placeholder="">
-                    <div class="invalid-feedback">
+                    <div class="error-msg toggle-display">
                         Valid address is required
                     </div>
                 </div>
             </div>
             <div class="row g-3 py-3">
-                <div class="col-sm-7">
+                <div class="form-field col-sm-7">
                     <label for="email" class="form-label">Contact Email</label>
                     <input type="text" class="form-control" id="email" placeholder="sample@email.com">
-                    <div class="invalid-feedback">
+                    <div class="error-msg toggle-display">
                         Please enter a delivery email
                     </div>
                 </div>
             </div>
             <div class="row g-3 py-3">
-                <div class="col-sm-3">
+                <div class="form-field col-sm-7">
+                    <label for="phone" class="form-label">Contact Phone #</label>
+                    <input type="text" class="form-control" id="phone" placeholder="07755 981783">
+                    <div class="error-msg toggle-display">
+                        Please enter a phone number
+                    </div>
+                </div>
+            </div>
+            <div class="row g-3 py-3">
+                <div class="form-field col-sm-3">
                     <label for="country" class="form-label">Country</label>
                     <input type="text" autocomplete='on' class="form-control" id="country" placeholder="United Kingdom"
                         required>
+                        <div class="error-msg toggle-display">
+                            Please enter a country
+                        </div>
                 </div>
 
-                <div class="col-sm-3">
+                <div class="form-field col-sm-3">
                     <label for="postcode" class="form-label">Post Code</label>
                     <input type="text" autocomplete='on' class="form-control" id="postcode" placeholder="SW1A 1AA"
                         required>
+                        <div class="error-msg toggle-display">
+                            Please enter a valid postcode
+                        </div>
                 </div>
             </div>
+            
         </form>
+        <button id="submitAddress" class="btn btn-primary">Submit</button>
     </section>
 
     <hr class="pt-5 w-50 mx-auto ">

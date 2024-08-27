@@ -96,7 +96,8 @@ async function sortDiscountCode() {
     }
 }
 
-function handleFormSubmit() {
+async function handleFormSubmit() {
+    let valid = true; 
     const submitForm = document.getElementById('submit-form')
     const formDivs = submitForm.getElementsByClassName("form-field")
     let fname = ''
@@ -114,23 +115,54 @@ function handleFormSubmit() {
         // checks if each field is empty + not required
         if (input.length === 0 && !div.classList.contains('not-necessary')) { 
             error.classList.remove('toggle-display')
+            valid = false; 
         } else { 
             // form is valid if makes it here 
             if (!error.classList.contains('toggle-display')){
                 error.classList.add('toggle-display')
             }
-
-            fname = document.getElementById('firstName').value; 
-            lname = document.getElementById('lastName').value; 
-            address1 = document.getElementById('address1').value;
-            address2 = document.getElementById('address2').value; 
-            email = document.getElementById('email').value;
-            phone = document.getElementById('phone').value;  
-            country = document.getElementById('country').value;
-            postcode = document.getElementById('postcode').value;
-
-            console.log('submitted')
         }
+    }
+
+    if (valid) { 
+        fname = document.getElementById('firstName').value; 
+        lname = document.getElementById('lastName').value; 
+        address1 = document.getElementById('address1').value;
+        address2 = document.getElementById('address2').value; 
+        email = document.getElementById('email').value;
+        phone = document.getElementById('phone').value;  
+        country = document.getElementById('country').value;
+        postcode = document.getElementById('postcode').value;
+
+        let data = { 
+            'fname': fname, 
+            'lname': lname, 
+            'address1': address1, 
+            'address2': address2, 
+            'email': email, 
+            'phone': phone, 
+            'country': country, 
+            'postcode': postcode
+        }
+
+        const headers = new Headers(); 
+        headers.append('Content-Type', 'application/json')
+
+        const response = await fetch(`/return-form-data`, { 
+            method: "POST", 
+            headers: headers,
+            body: JSON.stringify(data)
+        })
+
+
+        document.getElementById('firstName').value = ""; 
+        document.getElementById('lastName').value = ""; 
+        document.getElementById('address1').value = "";
+        document.getElementById('address2').value = ""; 
+        document.getElementById('email').value = "";
+        document.getElementById('phone').value = "";  
+        document.getElementById('country').value = "";
+        document.getElementById('postcode').value = "";
     }
     
 

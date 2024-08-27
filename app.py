@@ -1,6 +1,9 @@
 from flask import Flask, render_template, send_from_directory, jsonify
 import json
-
+from flask import request
+from email.message import EmailMessage
+import ssl 
+import smtplib
 # sizes go T/S/M/L/H
 
 
@@ -153,7 +156,39 @@ def return_data(ProdID):
 
 @app.route('/return-form-data', methods=['POST'])
 def return_form_data(): 
-    pass 
+    data = request.get_json() 
+    company_email = 'georgeangeluk@gmail.com'
+    email = 'crownedapparel.business@gmail.com'
+    password = 'oxeu jiik jwgr ofml' 
+
+    message = f'''
+Dear {data['fname']}, 
+
+Thank you for buying our product!! We expect it will be with you in 2 weeks, however if you would like an update just drop us an email at {company_email}.
+
+We hope you are satisfied with your purchase.
+
+Best wishes from the team at Crowned. 
+'''
+    
+    subject = 'Crowned Purchase'
+
+    em = EmailMessage() 
+    em['From'] = email
+    em['To'] = data['email']
+    em['Subject'] = subject
+    em.set_content(message) 
+
+    context = ssl.create_default_context() 
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp: 
+        smtp.login(email, password) 
+        smtp.sendmail(email, data['email'], em.as_string())
+
+
+
+    return "200"
+
 
 
 

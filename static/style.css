@@ -20,8 +20,8 @@ html {
     transition: opacity 0s 3.5s;
 }
 
-.navbar-brand { 
-    min-width: 150px; 
+.navbar-brand {
+    min-width: 150px;
 }
 
 /* 
@@ -98,8 +98,16 @@ html {
     }
 }
 
-.see-more-btn {
+/* .see-more-btn {
     background-color: transparent;
+
+} */
+
+#inputQuantity {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 10%;
+    color: white;
 
 }
 
@@ -186,7 +194,7 @@ html {
     transform: scale(1.2);
 }
 
-#addedTag { 
+#addedTag {
     opacity: 0;
     /* animation-name: add-basket; 
     animation-duration: 3s; 
@@ -195,19 +203,27 @@ html {
 
 }
 
-.added-basket-anim { 
-    animation-name: add-basket; 
-    animation-duration: 3s; 
+.added-basket-anim {
+    animation-name: add-basket;
+    animation-duration: 3s;
     animation-iteration-count: 1;
 }
 
 
 @keyframes add-basket {
-    10%{opacity:1}
-    99%{opacity: 1;}
-    100%{opacity: 0}
+    10% {
+        opacity: 1
+    }
+
+    99% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0
+    }
 }
 
-.error-msg { 
-    color: red; 
+.error-msg {
+    color: red;
 }

@@ -2,8 +2,9 @@ from flask import Flask, render_template, send_from_directory, jsonify
 import json
 from flask import request
 from email.message import EmailMessage
-import ssl 
+import ssl
 import smtplib
+
 # sizes go T/S/M/L/H
 
 
@@ -27,17 +28,20 @@ def products():
     return render_template("gallery.html")
 
 
-@app.route('/checkout')
-def checkount(): 
-    return render_template('checkout.html')
+@app.route("/checkout")
+def checkount():
+    return render_template("checkout.html")
 
-@app.route('/FAQ')
-def FAQ(): 
-    return render_template('FAQ.html')
 
-@app.route('/contact')
-def contact(): 
-    return render_template('contact.html')
+@app.route("/FAQ")
+def FAQ():
+    return render_template("FAQ.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 
 @app.route("/purchase-<ProdID>")
 def purchase_item(ProdID):
@@ -54,7 +58,7 @@ def purchase_item(ProdID):
         if product["id"] == ProdID:
             title = product["title"]
             price = product["price"]
-            #size = product["size"]
+            # size = product["size"]
             image_ = img + product["thumbnail"]
             subtitle = product["description"]
 
@@ -113,33 +117,36 @@ def get_stock_img(filename):
 
 #     return jsonify([images, titles, subtitles, ids, prices])
 
-@app.route('/alldata')
-def returnall(): 
+
+@app.route("/alldata")
+def returnall():
     img = "Images/Stock_Images/"
     images = []
     titles = []
     subtitles = []
     ids = []
     prices = []
-    sizes = [] # 2d array
+    sizes = []  # 2d array
 
-    with open("stock.json") as json_file: 
-        data = json.load(json_file)['stock']
-    
-    for prod in data: 
-        images.append(img + prod['thumbnail'])
-        titles.append(prod['title'])
-        subtitles.append(prod['subtitle'])
-        ids.append(prod['id'])
-        prices.append(prod['price'])
-        sizes.append({
-            'small': prod['small'], 
-            'medium': prod['medium'], 
-            'large': prod['large'], 
-            'xlarge': prod['xlarge']
-        })
+    with open("stock.json") as json_file:
+        data = json.load(json_file)["stock"]
 
-    return jsonify([images, titles, subtitles, ids, prices, sizes]) 
+    for prod in data:
+        images.append(img + prod["thumbnail"])
+        titles.append(prod["title"])
+        subtitles.append(prod["subtitle"])
+        ids.append(prod["id"])
+        prices.append(prod["price"])
+        sizes.append(
+            {
+                "small": prod["small"],
+                "medium": prod["medium"],
+                "large": prod["large"],
+                "xlarge": prod["xlarge"],
+            }
+        )
+
+    return jsonify([images, titles, subtitles, ids, prices, sizes])
 
 
 @app.route("/data/<ProdID>", methods=["GET", "POST"])
@@ -154,14 +161,17 @@ def return_data(ProdID):
             return product
     return "<h3>Not a valid product</h3>"
 
-@app.route('/return-form-data', methods=['POST'])
-def return_form_data(): 
-    data = request.get_json() 
-    company_email = 'georgeangeluk@gmail.com'
-    email = 'crownedapparel.business@gmail.com'
-    password = 'oxeu jiik jwgr ofml' 
 
-    message = f'''
+@app.route("/return-form-data", methods=["POST"])
+def return_form_data():
+    data = request.get_json()
+    company_email = "georgeangeluk@gmail.com"
+    email = "crownedapparel.business@gmail.com"
+    password = "oxeu jiik jwgr ofml"
+    laptop_passowrd = "obdw mqtx rmuu ybpv"
+    laptop_passowrd_2 = "ccmm jcnp jzwh fftu"
+
+    message = f"""
 Dear {data['fname']}, 
 
 Thank you for buying our product!! We expect it will be with you in 2 weeks, however if you would like an update just drop us an email at {company_email}.
@@ -169,27 +179,23 @@ Thank you for buying our product!! We expect it will be with you in 2 weeks, how
 We hope you are satisfied with your purchase.
 
 Best wishes from the team at Crowned. 
-'''
-    
-    subject = 'Crowned Purchase'
+"""
 
-    em = EmailMessage() 
-    em['From'] = email
-    em['To'] = data['email']
-    em['Subject'] = subject
-    em.set_content(message) 
+    subject = "Crowned Purchase"
 
-    context = ssl.create_default_context() 
+    em = EmailMessage()
+    em["From"] = email
+    em["To"] = data["email"]
+    em["Subject"] = subject
+    em.set_content(message)
 
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp: 
-        smtp.login(email, password) 
-        smtp.sendmail(email, data['email'], em.as_string())
+    context = ssl.create_default_context()
 
-
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as smtp:
+        smtp.login(email, laptop_passowrd_2)
+        smtp.sendmail(email, data["email"], em.as_string())
 
     return "200"
-
-
 
 
 if __name__ == "__main__":

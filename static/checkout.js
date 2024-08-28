@@ -61,6 +61,21 @@ async function updateBasketTable() {
     })
 }
 
+function removeDiscount() {
+    const discountInput = document.getElementById('discountCode')
+    const validDiscount = document.getElementById('validDiscount')
+    const invalidDiscount = document.getElementById('invalidDiscount')
+
+    discountInput.value = ''; 
+    if (!invalidDiscount.classList.contains('toggle-display')){ // if invisible
+        invalidDiscount.classList.remove('toggle-display') // make visible
+    }
+    if (!validDiscount.classList.contains('toggle-display')){ // if visible 
+        validDiscount.classList.add('toggle-display') // make invisible
+    }
+
+}
+
 async function sortDiscountCode() { 
     const discountInput = document.getElementById('discountCode')
     const validDiscount = document.getElementById('validDiscount')
@@ -176,6 +191,9 @@ function updateStock() {
     prodID = window.location.pathname.split('-')[1]
     // addedMsg.style.animation = `add-basket 3s ease 0s 1s forwards intial intial`
     addedMsg.style.animation = `add-basket 3s ease forwards 1`;
+    setInterval(function(){ 
+        addedMsg.style.animation = 'none';
+    }, 2000); 
     document.cookie = document.cookie +  "?" + prodID + "-" + amount.toString() + '-' + size;// stock?001-2?002-3
 
     //document.cookie.push(new_prod)
@@ -194,7 +212,7 @@ window.addEventListener('load', function() {
         clearBasket.addEventListener('click', function() { 
             document.cookie = "stock"
             updateBasketTable(); 
-            sortDiscountCode(); 
+            removeDiscount(); 
         })
         discountSubmit.addEventListener('click', function(){ 
             sortDiscountCode(); 

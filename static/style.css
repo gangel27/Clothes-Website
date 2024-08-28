@@ -108,12 +108,24 @@ html {
 
 } */
 
+.contact-icon:hover {
+    transform: scale(1.2);
+}
+
+.contact-icon {
+    color: white;
+}
+
 #inputQuantity {
     background-color: transparent;
     border: 1px solid white;
     border-radius: 10%;
     color: white;
+}
 
+.whiteOutline {
+    border: 1px solid white;
+    color: white;
 }
 
 .down-icon {

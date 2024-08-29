@@ -16,15 +16,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.carousel-item {
-    transition: transform 3.5s ease-in-out;
-}
-
-.carousel-fade .active.carousel-item-start,
-.carousel-fade .active.carousel-item-end {
-    transition: opacity 0s 3.5s;
-}
-
 .navbar-brand {
     min-width: 150px;
 }
@@ -129,12 +120,30 @@ html {
 }
 
 .down-icon {
-    color: black;
-    border: 5px solid black;
-    animation-name: pulse;
-    animation-duration: 2s;
+    color: white;
+    border: 1px solid white;
+    background-color: #21252b;
+    /* animation-name: pulse; */
+}
+
+#plsss {
+    animation-name: slide;
+    animation-duration: 0.7s;
     animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+}
+
+@keyframes slide {
+    0% {
+        /* transform: translateY(-50px); */
+        margin-top: 0;
+    }
+
+    100% {
+        /* transform: translate(0px); */
+        margin-top: 100px;
+    }
 }
 
 @keyframes pulse {
@@ -154,7 +163,6 @@ html {
 
 #landing-page {
     min-height: 85vh;
-    ;
     background-color: green;
     background-image: url('../Images/chess_4.png');
     background-repeat: no-repeat;

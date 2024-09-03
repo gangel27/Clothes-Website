@@ -256,3 +256,21 @@ html {
 .error-msg {
     color: red;
 }
+
+input[type="text"] {
+    background-color: #21252b;
+    color: white;
+}
+
+input[type="text"]::selection,
+input[type="text"]::-moz-selection,
+input[type="text"]::placeholder,
+input[type="text"]:not(:placeholder-shown) {
+    background-color: #21252b;
+    color: white;
+}
+
+input[type="text"]:focus {
+    background-color: #21252b !important;
+    color: white;
+}
